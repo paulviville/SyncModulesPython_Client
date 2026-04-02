@@ -1,0 +1,3 @@
+[submodule "SyncModulesPython"]
+	path = SyncModulesPython
+	url = git@github.com:paulviville/SyncModulesPython.git
