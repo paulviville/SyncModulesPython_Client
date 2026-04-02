@@ -22,6 +22,9 @@ class ClientNetwork:
 	async def send ( self, message: str ):
 		await self.websocket.send( message )
 
+	def sendFn ( self, message ):
+		asyncio.create_task( self.send(message) )
+
 	async def receive ( self ):
 		return await self.websocket.recv( )
 
@@ -50,7 +53,8 @@ async def main( ):
 	message = {
 		"UUID": str( uuid.uuid4( ) )
 	}
-	await clientNetwork.send( json.dumps( message ) )
+	clientNetwork.sendFn( json.dumps( message ) )
+	# await clientNetwork.send( json.dumps( message ) )
 
 	await asyncio.sleep(30)
 
