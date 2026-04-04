@@ -85,7 +85,6 @@ async def main( ):
 	def onModuleMessage ( payload ):
 		moduleUUID = uuid.UUID(payload[ "moduleUUID" ])
 		module = registry.getModule( moduleUUID )
-		print( "onMOduleMessage", moduleUUID, module )
 		if module is not None:
 			module.input( payload )
 
@@ -118,14 +117,12 @@ async def main( ):
 	clientNetwork.sendFn( json.dumps( message ) )
 	await asyncio.sleep(0.5)
 
-	scalar = registry.addModule( "Vector3Module", uuid.UUID(int=1), True)
-	await asyncio.sleep(0.5)
-	scalar.updateVector( [1, 1, 2], True )
-	await asyncio.sleep(0.5)
-	registry.removeModule( uuid.UUID(int=1), True )
+	# scalar = registry.addModule( "Vector3Module", uuid.UUID(int=1), True)
+	# await asyncio.sleep(0.5)
+	# scalar.updateVector( [1, 1, 2], True )
+	# await asyncio.sleep(0.5)
+	# registry.removeModule( uuid.UUID(int=1), True )
 	
-	print( registry.modulesList())
-
 	while True:
 		await asyncio.sleep(1)
 
